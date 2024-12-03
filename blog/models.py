@@ -11,5 +11,8 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
     content = models.TextField()
-    created_om = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    exerpt = models.TextField(blank=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    
