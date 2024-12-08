@@ -11,7 +11,7 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-def post_details(request, slug):
+def post_detail(request, slug):
     """
     Display an individual :model:`blog.Post`.
 
