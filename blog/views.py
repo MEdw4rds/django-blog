@@ -9,6 +9,9 @@ from .forms import CommentForm
 
 
 class PostList(generic.ListView):
+    """
+    Sets the amount of Posts per page and filters by only approved posts
+    """
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
@@ -22,6 +25,12 @@ def post_detail(request, slug):
 
     ``post``
         An instance of :model:`blog.Post`.
+    ``comments``
+        All approved comments related to the post.
+    ``comment_count``
+        The count of approved comments related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
 
     **Template:**
 
@@ -57,7 +66,15 @@ def post_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Display one comment for edit.
+
+    **Context**
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+    A single comment related to the post.
+    ``comment_form``
+    An instance of :form:`blog.CommentForm`.
     """
     if request.method == "POST":
 
@@ -80,7 +97,7 @@ def comment_edit(request, slug, comment_id):
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    Display one comment to Delete.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)

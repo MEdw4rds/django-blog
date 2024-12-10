@@ -5,6 +5,9 @@ from .models import About, CollaborateRequest
 
 @admin.register(About)
 class AboutAdmin(SummernoteModelAdmin):
+    """
+    Renders a summernote field for content in :model:`about.about`
+    """
     summernote_fields = ('content',)
 
 # Note: admin.ModelAdmin is the standard way of registering
@@ -16,5 +19,8 @@ class AboutAdmin(SummernoteModelAdmin):
 
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
-
+    """
+    Displays list of replies in the admin panel of 
+    :form:`about.CollaborateRequest`
+    """
     list_display = ('message', 'read',)
