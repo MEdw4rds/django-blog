@@ -163,3 +163,7 @@ body {
 .signup-form {
     margin: auto;
 }
+
+.profile-image {
+    width: 75%;
+}
